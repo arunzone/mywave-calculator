@@ -8,20 +8,19 @@ import java.math.BigDecimal;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-class MultiplyTest {
+class DivideTest {
+
   @Test
-  void shouldReturnMultiplicationResult() {
+  void shouldReturnDivisionResult() {
     Operation operation = new Operation(
-        new BigDecimal("3.0"),
-        '*',
-        new BigDecimal("2")
+        new BigDecimal("6.0"),
+        '/',
+        new BigDecimal("3")
     );
+    Divide divide = new Divide(operation);
 
-    Multiply multiply = new Multiply(operation);
+    BigDecimal result = divide.execute();
 
-    BigDecimal result = multiply.execute();
-
-    assertThat(result, is(new BigDecimal("6.0")));
+    assertThat(result, is(new BigDecimal("2.0")));
   }
-
 }
