@@ -46,4 +46,14 @@ class OperationInterpreterTest {
     assertThat(invalidInputException.getMessage(), is("Invalid right operand: 2bc"));
   }
 
+  @Test
+  void shouldThrowExceptionOnInvalidOperator(){
+    OperationInterpreter operationInterpreter =  new OperationInterpreter();
+    InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+      operationInterpreter.operationFrom(new String[]{"1", "#", "2"});
+    });
+
+    assertThat(invalidInputException.getMessage(), is("Invalid operator: #"));
+  }
+
 }
