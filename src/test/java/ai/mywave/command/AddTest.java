@@ -14,7 +14,7 @@ public class AddTest {
   public void shouldReturnSumResult() {
     Operation operation = new Operation(
         new BigDecimal("2.0"),
-        '+',
+        "+",
         new BigDecimal("3")
     );
     Add add = new Add();

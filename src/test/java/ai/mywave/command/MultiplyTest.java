@@ -13,7 +13,7 @@ class MultiplyTest {
   void shouldReturnMultiplicationResult() {
     Operation operation = new Operation(
         new BigDecimal("3.0"),
-        '*',
+        "*",
         new BigDecimal("2")
     );
 

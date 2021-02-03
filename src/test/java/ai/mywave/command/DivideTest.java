@@ -14,7 +14,7 @@ class DivideTest {
   void shouldReturnDivisionResult() {
     Operation operation = new Operation(
         new BigDecimal("6.0"),
-        '/',
+        "/",
         new BigDecimal("3")
     );
     Divide divide = new Divide();
