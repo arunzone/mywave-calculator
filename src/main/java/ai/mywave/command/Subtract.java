@@ -5,13 +5,7 @@ import ai.mywave.entity.Operation;
 import java.math.BigDecimal;
 
 public class Subtract {
-  private final Operation operation;
-
-  public Subtract(Operation operation) {
-    this.operation = operation;
-  }
-
-  public BigDecimal execute() {
+  public BigDecimal execute(Operation operation) {
     return operation.getLeftOperand().subtract(operation.getRightOperand());
   }
 }

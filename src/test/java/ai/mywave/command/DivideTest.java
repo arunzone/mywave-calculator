@@ -17,9 +17,9 @@ class DivideTest {
         '/',
         new BigDecimal("3")
     );
-    Divide divide = new Divide(operation);
+    Divide divide = new Divide();
 
-    BigDecimal result = divide.execute();
+    BigDecimal result = divide.execute(operation);
 
     assertThat(result, is(new BigDecimal("2.0")));
   }

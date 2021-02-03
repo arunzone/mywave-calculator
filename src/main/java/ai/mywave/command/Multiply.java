@@ -5,13 +5,7 @@ import ai.mywave.entity.Operation;
 import java.math.BigDecimal;
 
 public class Multiply {
-  private final Operation operation;
-
-  public Multiply(Operation operation) {
-    this.operation = operation;
-  }
-
-  public BigDecimal execute() {
+  public BigDecimal execute(Operation operation) {
     return operation.getLeftOperand().multiply(operation.getRightOperand());
   }
 }

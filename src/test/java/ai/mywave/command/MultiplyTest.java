@@ -17,9 +17,9 @@ class MultiplyTest {
         new BigDecimal("2")
     );
 
-    Multiply multiply = new Multiply(operation);
+    Multiply multiply = new Multiply();
 
-    BigDecimal result = multiply.execute();
+    BigDecimal result = multiply.execute(operation);
 
     assertThat(result, is(new BigDecimal("6.0")));
   }

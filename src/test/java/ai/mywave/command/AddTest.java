@@ -17,9 +17,9 @@ public class AddTest {
         '+',
         new BigDecimal("3")
     );
-    Add add = new Add(operation);
+    Add add = new Add();
 
-    BigDecimal result = add.execute();
+    BigDecimal result = add.execute(operation);
 
     assertThat(result, is(new BigDecimal("5.0")));
   }

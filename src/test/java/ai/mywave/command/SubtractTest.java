@@ -17,9 +17,9 @@ class SubtractTest {
         new BigDecimal("2")
     );
 
-    Subtract subtract = new Subtract(operation);
+    Subtract subtract = new Subtract();
 
-    BigDecimal result = subtract.execute();
+    BigDecimal result = subtract.execute(operation);
 
     assertThat(result, is(new BigDecimal("1.0")));
   }
