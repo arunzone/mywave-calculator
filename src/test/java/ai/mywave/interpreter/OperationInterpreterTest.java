@@ -27,13 +27,23 @@ class OperationInterpreterTest {
   }
 
   @Test
-  void shouldThrowExceptionOnInvalidInput(){
+  void shouldThrowExceptionOnInvalidLeftOperand(){
     OperationInterpreter operationInterpreter =  new OperationInterpreter();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
       operationInterpreter.operationFrom(new String[]{"1ab", "+", "2"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid left operand: 1ab"));
+  }
+
+  @Test
+  void shouldThrowExceptionOnInvalidRightOperand(){
+    OperationInterpreter operationInterpreter =  new OperationInterpreter();
+    InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+      operationInterpreter.operationFrom(new String[]{"1", "+", "2bc"});
+    });
+
+    assertThat(invalidInputException.getMessage(), is("Invalid right operand: 2bc"));
   }
 
 }
