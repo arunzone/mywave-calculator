@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 public class Operation {
   private BigDecimal rightOperand;
   private BigDecimal leftOperand;
-  private String operator;
+  private Character operator;
 
-  public Operation(BigDecimal leftOperand, String operator, BigDecimal rightOperand) {
+  public Operation(BigDecimal leftOperand, Character operator, BigDecimal rightOperand) {
     this.leftOperand = leftOperand;
     this.operator = operator;
     this.rightOperand = rightOperand;

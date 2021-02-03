@@ -8,18 +8,18 @@ import java.math.BigDecimal;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-class SubtractionCommandTest {
+class SubtractTest {
   @Test
   void shouldReturnSubtractionResult() {
     Operation operation = new Operation(
         new BigDecimal("3.0"),
-        "-",
+        '-',
         new BigDecimal("2")
     );
 
-    SubtractionCommand subtractionCommand = new SubtractionCommand(operation);
+    Subtract subtract = new Subtract(operation);
 
-    BigDecimal result = subtractionCommand.execute();
+    BigDecimal result = subtract.execute();
 
     assertThat(result, is(new BigDecimal("1.0")));
   }

@@ -4,10 +4,10 @@ import ai.mywave.entity.Operation;
 
 import java.math.BigDecimal;
 
-public class AdditionCommand {
+public class Add {
   private final Operation operation;
 
-  public AdditionCommand(Operation operation) {
+  public Add(Operation operation) {
     this.operation = operation;
   }
 
