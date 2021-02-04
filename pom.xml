@@ -150,6 +150,11 @@
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <excludes>
+                <exclude>**/Operation.*</exclude>
+              </excludes>
+            </configuration>
           </execution>
           <!-- Threshold -->
           <execution>

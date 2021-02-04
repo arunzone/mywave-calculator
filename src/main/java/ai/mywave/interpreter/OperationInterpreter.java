@@ -5,8 +5,7 @@ import ai.mywave.entity.Operation;
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
-import static java.util.Arrays.stream;
-import static java.util.stream.Collectors.joining;
+import static java.lang.String.join;
 
 public class OperationInterpreter {
 
@@ -48,7 +47,7 @@ public class OperationInterpreter {
 
   private void validateInput(String[] arguments) {
     if (arguments.length < 3) {
-      String formattedArguments = stream(arguments).collect(joining(" "));
+      String formattedArguments = join(" ", arguments);
       throw new InvalidInputException(String.format("Invalid input: %s", formattedArguments));
     }
   }
