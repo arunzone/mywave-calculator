@@ -1,4 +1,4 @@
-package ai.mywave.interpreter;
+package ai.mywave.parser;
 
 public class InvalidInputException extends RuntimeException{
   public InvalidInputException(String message){

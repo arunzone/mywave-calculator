@@ -1,4 +1,4 @@
-package ai.mywave.interpreter;
+package ai.mywave.parser;
 
 import ai.mywave.entity.Operation;
 
@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import static java.lang.String.join;
 
-public class OperationInterpreter {
+public class OperationParser {
 
   public static final Pattern OPERAND_PATTERN = Pattern.compile("^[0-9]+([.][0-9]+)?$");
   public static final Pattern OPERATOR_PATTERN = Pattern.compile("^([+\\-*/])$");
