@@ -10,5 +10,7 @@ public class ConsoleOutput {
 
   public void error(String message) {
     System.err.println(message);
+    System.out.println("Accepted input format: <Operand> <Operator> <Operand>");
+    System.out.println("example: 1.5 + 2.5");
   }
 }

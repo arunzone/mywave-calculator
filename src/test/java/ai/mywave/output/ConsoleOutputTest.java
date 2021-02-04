@@ -29,4 +29,13 @@ class ConsoleOutputTest {
     assertThat(text, is("Error message\n"));
   }
 
+  @Test
+  void shouldDisplayHelpMessageOnError() throws Exception {
+    String text = tapSystemOut(() -> {
+      new ConsoleOutput().error("Error message");
+    });
+
+    assertThat(text, is("Accepted input format: <Operand> <Operator> <Operand>\nexample: 1.5 + 2.5\n"));
+  }
+
 }
