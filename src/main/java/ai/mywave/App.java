@@ -10,9 +10,14 @@ import java.math.BigDecimal;
 
 public class App {
     public static void main(String[] args) {
-        Operation operation = new OperationInterpreter().operationFrom(args);
-        Command command = new CommandFactory().commandFor(operation);
-        BigDecimal result = command.execute(operation);
-        new ConsoleOutput().log(result);
+        ConsoleOutput consoleOutput = new ConsoleOutput();
+        try {
+            Operation operation = new OperationInterpreter().operationFrom(args);
+            Command command = new CommandFactory().commandFor(operation);
+            BigDecimal result = command.execute(operation);
+            consoleOutput.log(result);
+        } catch (Exception exception) {
+            consoleOutput.error(exception.getMessage());
+        }
     }
 }

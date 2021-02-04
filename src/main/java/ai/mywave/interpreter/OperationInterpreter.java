@@ -5,19 +5,27 @@ import ai.mywave.entity.Operation;
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.joining;
+
 public class OperationInterpreter {
 
   public static final Pattern OPERAND_PATTERN = Pattern.compile("^[0-9]+([.][0-9]+)?$");
   public static final Pattern OPERATOR_PATTERN = Pattern.compile("^([+\\-*/])$");
 
   public Operation operationFrom(String[] arguments) {
-    validateLeftOperand(arguments[0]);
-    validateRightOperand(arguments[2]);
-    validateOperator(arguments[1]);
+    validate(arguments);
     return new Operation(
         new BigDecimal(arguments[0]),
         arguments[1],
         new BigDecimal(arguments[2]));
+  }
+
+  private void validate(String[] arguments) {
+    validateInput(arguments);
+    validateLeftOperand(arguments[0]);
+    validateRightOperand(arguments[2]);
+    validateOperator(arguments[1]);
   }
 
   private void validateLeftOperand(String argument) {
@@ -35,6 +43,13 @@ public class OperationInterpreter {
   private void validateOperator(String argument) {
     if (!OPERATOR_PATTERN.matcher(argument).matches()) {
       throw new InvalidInputException(String.format("Invalid operator: %s", argument));
+    }
+  }
+
+  private void validateInput(String[] arguments) {
+    if (arguments.length < 3) {
+      String formattedArguments = stream(arguments).collect(joining(" "));
+      throw new InvalidInputException(String.format("Invalid input: %s", formattedArguments));
     }
   }
 

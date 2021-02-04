@@ -1,8 +1,6 @@
 package ai.mywave.interpreter;
 
 import ai.mywave.entity.Operation;
-import ai.mywave.interpreter.InvalidInputException;
-import ai.mywave.interpreter.OperationInterpreter;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -47,13 +45,23 @@ class OperationInterpreterTest {
   }
 
   @Test
-  void shouldThrowExceptionOnInvalidOperator(){
-    OperationInterpreter operationInterpreter =  new OperationInterpreter();
+  void shouldThrowExceptionOnInvalidOperator() {
+    OperationInterpreter operationInterpreter = new OperationInterpreter();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
       operationInterpreter.operationFrom(new String[]{"1", "#", "2"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid operator: #"));
+  }
+
+  @Test
+  void shouldThrowExceptionOnInvalidInput() {
+    OperationInterpreter operationInterpreter = new OperationInterpreter();
+    InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+      operationInterpreter.operationFrom(new String[]{"1", "#"});
+    });
+
+    assertThat(invalidInputException.getMessage(), is("Invalid input: 1 #"));
   }
 
 }
