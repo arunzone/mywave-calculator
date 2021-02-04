@@ -7,8 +7,9 @@ maven 3.6.2 Jdk 14
 ---
 
 ## How to use?
-Assumed the input is provided as program arguments when executing program
-so it can be run from any IDE or command line
+Assumed the input is provided as program arguments when executing program,
+so, it can be run from either IDE or command line
+
 ### Run program
 
 if maven and java14 are available in machine
