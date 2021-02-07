@@ -152,7 +152,7 @@
             </goals>
             <configuration>
               <excludes>
-                <exclude>**/Operation.*</exclude>
+                <exclude>**/Expression.*</exclude>
               </excludes>
             </configuration>
           </execution>
