@@ -1,21 +1,34 @@
 package ai.mywave.command;
 
-import ai.mywave.entity.Operation;
+import ai.mywave.entity.Expression;
+import ai.mywave.parser.AlgebraicExpressionParser;
 
 import java.util.Map;
+import java.util.function.Function;
 
 import static java.util.Map.entry;
 
 public class CommandFactory {
-  private final Map<String, Command> commandRegistry = Map.ofEntries(
-      entry("+", new Add()),
-      entry("-", new Subtract()),
-      entry("*", new Multiply()),
-      entry("/", new Divide())
+  private final AlgebraicExpressionParser algebraicExpressionParser;
+  private final Map<String, Function<Expression, Command>> algebraicCommandRegistry = Map.ofEntries(
+      entry("+", Add::new),
+      entry("-", Subtract::new),
+      entry("*", Multiply::new),
+      entry("/", Divide::new)
   );
 
+  public CommandFactory(AlgebraicExpressionParser algebraicExpressionParser) {
+    this.algebraicExpressionParser = algebraicExpressionParser;
+  }
 
-  public Command commandFor(Operation operation) {
-    return commandRegistry.get(operation.getOperator());
+
+  public Command commandFor(String[] arguments) {
+    if (arguments.length == 3) {
+      Expression expression = algebraicExpressionParser.operationFrom(arguments);
+      return algebraicCommandRegistry.
+          get(expression.getOperator()).
+          apply(expression);
+    }
+    return () -> null;
   }
 }

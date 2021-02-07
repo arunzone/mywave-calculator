@@ -167,7 +167,7 @@
                 <rule>
                   <element>CLASS</element>
                   <excludes>
-                    <exclude>ai.mywave.entity.Operation</exclude>
+                    <exclude>ai.mywave.entity.Expression</exclude>
                   </excludes>
                   <limits>
                     <limit>

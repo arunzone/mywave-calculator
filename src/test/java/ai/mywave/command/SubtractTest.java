@@ -1,6 +1,6 @@
 package ai.mywave.command;
 
-import ai.mywave.entity.Operation;
+import ai.mywave.entity.Expression;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -11,15 +11,15 @@ import static org.hamcrest.core.Is.is;
 class SubtractTest {
   @Test
   void shouldReturnSubtractionResult() {
-    Operation operation = new Operation(
+    Expression expression = new Expression(
         new BigDecimal("3.0"),
         "-",
         new BigDecimal("2")
     );
 
-    Subtract subtract = new Subtract();
+    Subtract subtract = new Subtract(expression);
 
-    BigDecimal result = subtract.execute(operation);
+    BigDecimal result = subtract.execute();
 
     assertThat(result, is(new BigDecimal("1.0")));
   }

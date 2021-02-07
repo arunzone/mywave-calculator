@@ -1,6 +1,6 @@
 package ai.mywave.parser;
 
-import ai.mywave.entity.Operation;
+import ai.mywave.entity.Expression;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -9,26 +9,26 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class OperationParserTest {
+class ExpressionParserTest {
   @Test
-  void shouldReturnValidOperation(){
-    Operation sumOperation = new Operation(
+  void shouldReturnValidOperation() {
+    Expression sumExpression = new Expression(
         new BigDecimal("1"),
         "+",
         new BigDecimal("2")
     );
-    OperationParser operationParser =  new OperationParser();
+    AlgebraicExpressionParser algebraicExpressionParser = new AlgebraicExpressionParser();
 
-    Operation operation = operationParser.operationFrom(new String[]{"1", "+", "2"});
+    Expression expression = algebraicExpressionParser.operationFrom(new String[]{"1", "+", "2"});
 
-    assertThat(operation, is(sumOperation));
+    assertThat(expression, is(sumExpression));
   }
 
   @Test
   void shouldThrowExceptionOnInvalidLeftOperand(){
-    OperationParser operationParser =  new OperationParser();
+    AlgebraicExpressionParser algebraicExpressionParser = new AlgebraicExpressionParser();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
-      operationParser.operationFrom(new String[]{"1ab", "+", "2"});
+      algebraicExpressionParser.operationFrom(new String[]{"1ab", "+", "2"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid left operand: 1ab"));
@@ -36,9 +36,9 @@ class OperationParserTest {
 
   @Test
   void shouldThrowExceptionOnInvalidRightOperand(){
-    OperationParser operationParser =  new OperationParser();
+    AlgebraicExpressionParser algebraicExpressionParser = new AlgebraicExpressionParser();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
-      operationParser.operationFrom(new String[]{"1", "+", "2bc"});
+      algebraicExpressionParser.operationFrom(new String[]{"1", "+", "2bc"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid right operand: 2bc"));
@@ -46,9 +46,9 @@ class OperationParserTest {
 
   @Test
   void shouldThrowExceptionOnInvalidOperator() {
-    OperationParser operationParser = new OperationParser();
+    AlgebraicExpressionParser algebraicExpressionParser = new AlgebraicExpressionParser();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
-      operationParser.operationFrom(new String[]{"1", "#", "2"});
+      algebraicExpressionParser.operationFrom(new String[]{"1", "#", "2"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid operator: #"));
@@ -56,9 +56,9 @@ class OperationParserTest {
 
   @Test
   void shouldThrowExceptionOnInvalidInput() {
-    OperationParser operationParser = new OperationParser();
+    AlgebraicExpressionParser algebraicExpressionParser = new AlgebraicExpressionParser();
     InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
-      operationParser.operationFrom(new String[]{"1", "#"});
+      algebraicExpressionParser.operationFrom(new String[]{"1", "#"});
     });
 
     assertThat(invalidInputException.getMessage(), is("Invalid input: 1 #"));

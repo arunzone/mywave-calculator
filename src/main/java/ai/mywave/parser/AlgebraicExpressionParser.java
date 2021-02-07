@@ -1,20 +1,20 @@
 package ai.mywave.parser;
 
-import ai.mywave.entity.Operation;
+import ai.mywave.entity.Expression;
 
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
 import static java.lang.String.join;
 
-public class OperationParser {
+public class AlgebraicExpressionParser {
 
   public static final Pattern OPERAND_PATTERN = Pattern.compile("^[0-9]+([.][0-9]+)?$");
   public static final Pattern OPERATOR_PATTERN = Pattern.compile("^([+\\-*/])$");
 
-  public Operation operationFrom(String[] arguments) {
+  public Expression operationFrom(String[] arguments) {
     validate(arguments);
-    return new Operation(
+    return new Expression(
         new BigDecimal(arguments[0]),
         arguments[1],
         new BigDecimal(arguments[2]));
